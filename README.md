@@ -228,7 +228,6 @@ python cdar/cdar_mcp.py
 
 ---
 
-## 📜 License
+## Roadmap & upcoming releases
 
-MIT
-```
+This repository already includes the runnable MCP server and the `prompts_upgrade` configuration. **Experiment scripts, supplementary material, and full reproducibility notes tied to our publication** will be added after the paper is finalized (camera-ready), via **GitHub Releases** and README updates. If you need something earlier for research or integration, please open an [Issue](https://github.com/kingsteve13091/Cdar-/issues) and describe the use case.
