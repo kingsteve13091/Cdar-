@@ -2,7 +2,7 @@
   <img src="cdar.png" alt="CDAR Framework" width="80%">
 </p>
 
-# CDAR Open-Source Package
+# CDAR 
 
 **CDAR** (A Compositional and Decomposed Adaptive Reasoning Framework for Visual Question Answering via MCP) is an open-source tool designed to enhance Visual Question Answering (VQA) through dynamic reasoning strategies using the Model Context Protocol (MCP).
 
