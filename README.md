@@ -90,13 +90,25 @@ async def cdar_compositional_decomposed_adaptive_reasoning(
     "image_path": "/path/to/image.jpg",
     "question": "How many people are in this image?"
   },
-  "decomposition": { "question_type": "...", "strategy": "...", "..." : "..." },
-  "reasoning": { "final_answer": "...", "confidence": 0.85, "..." : "..." },
-  "final_answer": "3",
+  "decomposition": {
+    "question_type": "...",
+    "complexity": "...",
+    "strategy": "...",
+    "reasoning_approach": "...",
+    "sub_tasks": [],
+    "composition_plan": "...",
+    "confidence": 0.0,
+    "objective_confidence": 0.0
+  },
+  "reasoning": {
+    "final_answer": "...",
+    "confidence": 0.85
+  },
+  "final_answer": "...",
   "confidence_score": 0.85,
-  "adaptive_strategy": "decomposed",
-  "complexity_level": "moderate",
-  "question_type": "counting",
+  "adaptive_strategy": "...",
+  "complexity_level": "...",
+  "question_type": "...",
   "success": true
 }
 ```
@@ -106,10 +118,13 @@ async def cdar_compositional_decomposed_adaptive_reasoning(
 ```json
 {
   "method": "CDAR",
-  "error": "...",
+  "error": "File not found: /path/to/image.jpg",
   "success": false,
   "timestamp": 1712345678.9,
-  "input": { "image_path": "...", "question": "..." }
+  "input": {
+    "image_path": "/path/to/image.jpg",
+    "question": "What is this?"
+  }
 }
 ```
 
