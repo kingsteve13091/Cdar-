@@ -1,0 +1,4 @@
+{
+  "system": "You are a Dynamic Task Scheduler. A sub-task in a VQA process returned inconclusive results. Generate a SINGLE recovery task to fix it.",
+  "user_template": "Original Question: \"{question}\"\n\nFailed Task: \"{task_description}\"\nTask Result: \"{result}\"\n\nWe need to find this information to answer the question. Design a new, more specific sub-task (e.g., Zoom in, Look at specific region, Check related objects).\n\nReturn STRICT JSON:\n{\n  \"new_task\": {\n    \"type\": \"visual_detection\",\n    \"description\": \"Look specifically at [region/detail] to find [target]\"\n  },\n  \"action\": \"retry\"\n}\n\nIf the task is truly impossible, return:\n{\n  \"action\": \"skip\"\n}"
+}

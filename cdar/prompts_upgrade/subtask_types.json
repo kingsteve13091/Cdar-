@@ -1,0 +1,41 @@
+{
+  "supported_types": [
+    "visual_detection",
+    "spatial_analysis", 
+    "counting",
+    "comparison",
+    "synthesis",
+    "temporal_analysis",
+    "numerical_analysis",
+    "attribute_analysis",
+    "causal_analysis",
+    "emotion_analysis"
+  ],
+  "type_descriptions": {
+    "visual_detection": "Detect objects and their attributes. STRICT POINT FORM ONLY. Format: - [Object]: [count/attribute]. - [Object]: [count/attribute]. Max 50 words. NO complete sentences. NO explanations. Only facts.",
+    "spatial_analysis": "Analyze spatial relationships. STRICT POINT FORM ONLY. Format: - [Object A] [relation] [Object B]. - [Object C] [relation] [Object D]. Max 50 words. NO complete sentences. Only spatial facts.",
+    "counting": "Count elements. STRICT POINT FORM ONLY. Format: - Count: [number]. - [Item]: [count]. Max 30 words. NO explanations. Only numbers.",
+    "comparison": "Compare elements. STRICT POINT FORM ONLY. Format: - [Item1] vs [Item2]: [difference]. - [Item3] vs [Item4]: [difference]. Max 50 words. NO complete sentences. Only comparisons.",
+    "synthesis": "Synthesize information. STRICT POINT FORM ONLY. Format: - Conclusion: [answer]. - Key evidence: [fact1], [fact2]. Max 40 words. NO complete sentences. Only conclusion and key facts.",
+    "temporal_analysis": "Analyze time sequences. STRICT POINT FORM ONLY. Format: - [Event1] -> [Event2]. - [Event3] -> [Event4]. Max 50 words. NO complete sentences. Only temporal facts.",
+    "numerical_analysis": "Perform calculations. STRICT POINT FORM ONLY. Format: - Result: [number]. - Steps: [step1], [step2]. Max 30 words. NO explanations. Only numbers and steps.",
+    "attribute_analysis": "Analyze attributes. STRICT POINT FORM ONLY. Format: - [Object]: [attribute]=[value]. - [Object]: [attribute]=[value]. Max 50 words. NO complete sentences. Only attributes.",
+    "causal_analysis": "Identify cause-effect. STRICT POINT FORM ONLY. Format: - [Cause] -> [Effect]. - [Cause] -> [Effect]. Max 50 words. NO complete sentences. Only causal facts.",
+    "emotion_analysis": "Recognize emotions. STRICT POINT FORM ONLY. Format: - [Subject]: [emotion]. - [Subject]: [emotion]. Max 40 words. NO complete sentences. Only emotions."
+  },
+  "default_outputs": {
+    "visual_detection": "detected objects",
+    "spatial_analysis": "spatial facts",
+    "counting": "count",
+    "comparison": "comparison results",
+    "synthesis": "conclusion",
+    "temporal_analysis": "temporal insights",
+    "numerical_analysis": "numerical result",
+    "attribute_analysis": "attribute values",
+    "causal_analysis": "causal relationships",
+    "emotion_analysis": "emotional assessment"
+  },
+  "execution_template": "Original Question: \"{question}\"\n\nSub-task: {description}\n\n{task_specific_instruction}\n\nContext from previous tasks:{context_info}\n\nProvide a focused analysis for this specific sub-task. Be precise and concise.",
+  "default_task_instruction": "Analyze the image according to the task description.",
+  "output_constraints": "CRITICAL CONSTRAINT - STRICT POINT FORM ONLY: \n1. Output MUST be in point form (bullet points starting with '-'). Maximum 50 words total.\n2. NO complete sentences. NO explanations. NO reasoning. Only facts.\n3. Format: - [fact1]. - [fact2]. - [fact3].\n4. DO NOT use phrases like \"The image shows\", \"I can see\", \"Based on\", \"According to\".\n5. If object/attribute is NOT present, say \"- [Object]: Not present\".\n6. Preserve numbers and counts: - Count: [number].\n7. NO filler text. NO transitions. NO conjunctions. Only direct facts."
+}
