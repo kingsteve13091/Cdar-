@@ -66,9 +66,9 @@ The server exposes one tool:
 ```python
 @mcp.tool()
 async def cdar_compositional_decomposed_adaptive_reasoning(
-    image_path: str,          # local filesystem path to the image
-    question: str,            # natural-language question
-    ctx: Context,             # injected by MCP runtime
+    image_path: str,            # local filesystem path to the image
+    question: str,              # natural-language question
+    ctx: Context,               # injected by MCP runtime
     force_strategy: str = None  # "direct" | "decomposed" | None (adaptive)
 ) -> str:
 ```
@@ -90,13 +90,25 @@ async def cdar_compositional_decomposed_adaptive_reasoning(
     "image_path": "/path/to/image.jpg",
     "question": "How many people are in this image?"
   },
-  "decomposition": { "question_type": "...", "strategy": "...", "..." : "..." },
-  "reasoning": { "final_answer": "...", "confidence": 0.85, "..." : "..." },
-  "final_answer": "3",
+  "decomposition": {
+    "question_type": "...",
+    "complexity": "...",
+    "strategy": "...",
+    "reasoning_approach": "...",
+    "sub_tasks": [],
+    "composition_plan": "...",
+    "confidence": 0.0,
+    "objective_confidence": 0.0
+  },
+  "reasoning": {
+    "final_answer": "...",
+    "confidence": 0.85
+  },
+  "final_answer": "...",
   "confidence_score": 0.85,
-  "adaptive_strategy": "decomposed",
-  "complexity_level": "moderate",
-  "question_type": "counting",
+  "adaptive_strategy": "...",
+  "complexity_level": "...",
+  "question_type": "...",
   "success": true
 }
 ```
@@ -120,7 +132,10 @@ Runtime exceptions return:
   "error": "...",
   "success": false,
   "timestamp": 1712345678.9,
-  "input": { "image_path": "...", "question": "..." }
+  "input": {
+    "image_path": "...",
+    "question": "..."
+  }
 }
 ```
 
@@ -167,9 +182,9 @@ All config is loaded from `cdar/prompts_upgrade/` (10 required JSON files):
 | Variable | Behavior |
 |---|---|
 | `SILICONFLOW_MODEL` | Overrides default model. Read via `os.getenv()` at import time. |
-| `SILICONFLOW_API_KEY` | ⚠️ **Currently hardcoded** in `cdar_mcp.py`, **not** read from `.env` or environment. |
+| `SILICONFLOW_API_KEY` | ⚠️ **Currently hardcoded** in `cdar/cdar_mcp.py`, **not** read from `.env` or environment. |
 
-> 🔑 You must edit `cdar_mcp.py` directly to set your own API key before running.
+> 🔑 You must edit `cdar/cdar_mcp.py` directly to set your own API key before running.
 
 ---
 
@@ -177,14 +192,16 @@ All config is loaded from `cdar/prompts_upgrade/` (10 required JSON files):
 
 ```bash
 # 1. Install dependencies
-pip install fastmcp httpx Pillow
+pip install -r cdar/requirements.txt
 
 # 2. Edit cdar/cdar_mcp.py — replace the hardcoded SILICONFLOW_API_KEY
 
 # 3. (Optional) override model
 export SILICONFLOW_MODEL="Qwen/Qwen3-VL-32B-Instruct"
+
 # Windows PowerShell:
 $env:SILICONFLOW_MODEL="Qwen/Qwen3-VL-32B-Instruct"
+
 # Windows CMD:
 set SILICONFLOW_MODEL=Qwen/Qwen3-VL-32B-Instruct
 
@@ -202,6 +219,9 @@ python cdar/cdar_mcp.py
 | `SETUP.md` | Environment and dependency setup |
 | `RUN_EXAMPLE.md` | Server startup and strategy usage examples |
 | `REPRODUCIBILITY.md` | Reproducibility checklist with current defaults |
+| `cdar/requirements.txt` | Python dependencies (`pip install -r cdar/requirements.txt`) |
+| `cdar/CONTRIBUTING.md` | How to report issues, submit PRs, and code style |
+| `cdar/SECURITY.md` | Vulnerability reporting policy and known considerations |
 | `.env.example` | Environment variable template |
 | `.gitignore` | Ignore rules for secrets and outputs |
 | `LICENSE` | MIT license |
