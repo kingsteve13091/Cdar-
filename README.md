@@ -2,7 +2,7 @@
   <img src="cdar.png" alt="CDAR Framework" width="80%">
 </p>
 
-# 🧠 CDAR
+#  CDAR
 
 **CDAR** (Compositional Decomposed Adaptive Reasoning) is an MCP server for Visual Question Answering, built on [FastMCP](https://github.com/jlowin/fastmcp). It takes a local image file and a natural-language question, then returns a structured JSON answer with multi-stage confidence scoring.
 
