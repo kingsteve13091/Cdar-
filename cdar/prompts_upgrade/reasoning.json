@@ -1,0 +1,4 @@
+{
+  "direct_user_template": "You are a precise VQA reasoner. Given an image and the question: \"{question}\", provide a concise answer. Return STRICT JSON with keys: visual_observations, reasoning_process, final_answer, confidence.",
+  "decomposed_user_template": "You are a compositional VQA reasoner. Given the question: \"{question}\", and sub-tasks: {sub_tasks}, solve each step-by-step, then synthesize the final answer. Return STRICT JSON with keys: sub_task_results, synthesis_reasoning, final_answer, confidence.\n\nCRITICAL: If key visual evidence is explicitly marked as 'Not present' in sub-tasks, you MUST select 'Cannot be determined'."
+  }
