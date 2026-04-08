@@ -2,7 +2,7 @@
   <img src="cdar.png" alt="CDAR Framework" width="80%">
 </p>
 
-#  CDAR
+# 🧠 CDAR
 
 **CDAR** (Compositional Decomposed Adaptive Reasoning) is an MCP server for Visual Question Answering, built on [FastMCP](https://github.com/jlowin/fastmcp). It takes a local image file and a natural-language question, then returns a structured JSON answer with multi-stage confidence scoring.
 
@@ -90,41 +90,37 @@ async def cdar_compositional_decomposed_adaptive_reasoning(
     "image_path": "/path/to/image.jpg",
     "question": "How many people are in this image?"
   },
-  "decomposition": {
-    "question_type": "...",
-    "complexity": "...",
-    "strategy": "...",
-    "reasoning_approach": "...",
-    "sub_tasks": [],
-    "composition_plan": "...",
-    "confidence": 0.0,
-    "objective_confidence": 0.0
-  },
-  "reasoning": {
-    "final_answer": "...",
-    "confidence": 0.85
-  },
-  "final_answer": "...",
+  "decomposition": { "question_type": "...", "strategy": "...", "..." : "..." },
+  "reasoning": { "final_answer": "...", "confidence": 0.85, "..." : "..." },
+  "final_answer": "3",
   "confidence_score": 0.85,
-  "adaptive_strategy": "...",
-  "complexity_level": "...",
-  "question_type": "...",
+  "adaptive_strategy": "decomposed",
+  "complexity_level": "moderate",
+  "question_type": "counting",
   "success": true
 }
 ```
 
 ### ❌ Error Response
 
+Pre-check failures (missing file / invalid image) return:
+
+```json
+{
+  "error": "...",
+  "success": false
+}
+```
+
+Runtime exceptions return:
+
 ```json
 {
   "method": "CDAR",
-  "error": "File not found: /path/to/image.jpg",
+  "error": "...",
   "success": false,
   "timestamp": 1712345678.9,
-  "input": {
-    "image_path": "/path/to/image.jpg",
-    "question": "What is this?"
-  }
+  "input": { "image_path": "...", "question": "..." }
 }
 ```
 
@@ -187,6 +183,10 @@ pip install fastmcp httpx Pillow
 
 # 3. (Optional) override model
 export SILICONFLOW_MODEL="Qwen/Qwen3-VL-32B-Instruct"
+# Windows PowerShell:
+$env:SILICONFLOW_MODEL="Qwen/Qwen3-VL-32B-Instruct"
+# Windows CMD:
+set SILICONFLOW_MODEL=Qwen/Qwen3-VL-32B-Instruct
 
 # 4. Start the MCP server
 python cdar/cdar_mcp.py
@@ -205,4 +205,10 @@ python cdar/cdar_mcp.py
 | `.env.example` | Environment variable template |
 | `.gitignore` | Ignore rules for secrets and outputs |
 | `LICENSE` | MIT license |
+
+---
+
+## 📜 License
+
+MIT
 ```
