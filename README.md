@@ -12,7 +12,7 @@
 
 ## ⚙️ Pipeline Overview
 
-![Pipeline Overview](pipeline_diagram.png)
+![Pipeline Overview](pipeline-overview.png)
 
 The system executes three sequential phases:
 
